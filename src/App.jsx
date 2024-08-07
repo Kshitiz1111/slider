@@ -6,13 +6,12 @@ function App() {
   const cardRef = useRef(null)
   const startYAxis = useRef(0);
   const latestYAxis = useRef(0);
-  let travelDistance = 80;
+  let travelDistance = 100;
 
   let items = [1, 2, 3, 4, 5, 6]
 
   const handleTouchStart = (e) => {
     startYAxis.current = e.touches[0].clientY
-    console.log("touch started")
   }
 
   const handleTouchMove = (e) => {
@@ -25,7 +24,6 @@ function App() {
       setActiveCardIndex(activeCardIndex - 1);
       startYAxis.current = latestYAxis.current;
     }
-    console.log("moving")
   };
 
   useEffect(() => {
@@ -38,10 +36,11 @@ function App() {
       card.removeEventListener('touchmove', handleTouchMove);
     };
   }, [activeCardIndex, items.length]);
-  console.log(activeCardIndex)
 
   return (
-    <div className='w-full h-screen relative overflow-hidden'>
+    <div className='w-full h-screen relative overflow-hidden'
+      style={{ background: 'linear-gradient(to top left, #713CBD, #CE257C, #EAA978)' }}
+    >
       <div ref={cardRef} className="w-full flex flex-col items-center gap-4">
         {items.map((item, index) => {
           const prevCard = index < activeCardIndex;
