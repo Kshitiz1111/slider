@@ -12,6 +12,9 @@ module.exports = {
         'custom-pink': '#DA696F',
         'custom-pink-2': '#CF7782'
       },
+      borderColor:{
+        'custom-slider-card': '#EA9B89'
+      }
     },
   },
   plugins: [],
