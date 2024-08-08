@@ -8,20 +8,21 @@ function App() {
   const latestYAxis = useRef(0);
   const isScrolling = useRef(false);
   let touchTravelDistance = 100;
-  let weelTravelDistance = 90;
 
   let items = [1, 2, 3, 4, 5, 6]
 
   const handleTouchStart = (e) => {
     startYAxis.current = e.touches[0].clientY
+    console.log('start')
   }
 
   const handleTouchMove = (e) => {
     latestYAxis.current = e.touches[0].clientY;
     const distance = startYAxis.current - latestYAxis.current;
+    console.log("distance", distance, startYAxis.current, latestYAxis.current)
     if (distance > touchTravelDistance && activeCardIndex < items.length - 1) {
       setActiveCardIndex(activeCardIndex + 1);
-      startYAxis.current = latestYAxis.current;
+      startYAxis.current = latestYAxis.current;//for continuous scroll with out lifting finger
     } else if (distance < - touchTravelDistance && activeCardIndex > 0) {
       setActiveCardIndex(activeCardIndex - 1);
       startYAxis.current = latestYAxis.current;
@@ -58,8 +59,7 @@ function App() {
   }, [activeCardIndex, items.length]);
 
   return (
-    <div className='w-full h-screen relative overflow-hidden'
-      style={{ background: 'linear-gradient(to top left, #713CBD, #CE257C, #EAA978)' }}
+    <div className='w-full h-screen bg-custom-body relative overflow-hidden'
     >
       <div ref={cardRef} className="w-full overflow-y-scroll flex flex-col items-center gap-4">
         {items.map((item, index) => {
@@ -76,7 +76,6 @@ function App() {
               prevCard={prevCard}
               nextCard={nextCard}
               visibilityStyle={cardStyle}
-              content={item}
             />
           );
         })}

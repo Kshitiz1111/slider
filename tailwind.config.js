@@ -13,7 +13,12 @@ module.exports = {
         'custom-pink-2': '#CF7782'
       },
       borderColor:{
-        'custom-slider-card': '#EA9B89'
+        'custom-slider-card-content': '#EA9B89',
+        'custom-slider-card':'rgba(235, 168, 162, 0.5)'
+      },
+      backgroundImage:{
+        'custom-body': 'linear-gradient(to top left, #713CBD, #CE257C, #EAA978)',
+        'custom-card': 'linear-gradient(to bottom right, #DA696F, #B36291)'
       }
     },
   },
